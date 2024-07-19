@@ -47,4 +47,4 @@ if aws_environment != "GlobalOSS":
 else:
     region = find_region_goss(instance_name, region_codes_goss)
 
-print(f"{instance_name}: {region}")
+print(f"{region}")
