@@ -24,7 +24,40 @@ def describe_volume(volume_id, session):
                 #break
     except Exception as e:
         print(f'Function: describe_volume. Error message: {e}')
-                
+
+def checkCommandStatus(curSession,commandId,instances):
+    inProgress = True
+ 
+    #If instances is not a list, convert it to a list
+ 
+    if not isinstance(instances, list):
+        instances = [instances]
+
+    var = ""
+    while not var:    
+        ssmStatus = ""
+        #print("Waiting 5 seconds before checking status...")
+        time.sleep(10)
+        for ssmInstances in instances:
+            #print(ssmInstances)
+            output = curSession.get_command_invocation(
+                CommandId=commandId,
+                InstanceId=ssmInstances
+            )
+            #ssmStatus.append(str(output['StatusDetails']))
+            ssmStatus = str(output['StatusDetails'])
+
+            #print("Command ID: " + str(output['CommandId']) + " Instance: " + \
+                #str(output['InstanceId']) + " Status: " + str(output['StatusDetails']))
+ 
+        #Check back in 5 minutes to avoid hammering the commection with status requests
+        if (ssmStatus != 'Success'):
+            #print("Waiting 5 secs before checking back")
+            print(ssmStatus)
+            time.sleep(5)
+        else:
+            var = "okay"
+             
 instance_id = sys.argv[1]
 region = sys.argv[2]
 volume_id = sys.argv[3]
@@ -40,4 +73,7 @@ ssm_doc_name = 'CSfilesDeletionOnSurrogateLinuxBox'
 ssm_client = boto3.client('ssm',  region_name = region)
 ssm_create_response = ssm_client.create_document(Content = ssm_json, Name = ssm_doc_name, DocumentType = 'Command', DocumentFormat = 'JSON', TargetType =  "/AWS::EC2::Instance")
 ssm_run_response = ssm_client.send_command(InstanceIds = [instance_id], DocumentName=ssm_doc_name, DocumentVersion="$DEFAULT", TimeoutSeconds=120)
+command_id = ssm_run_response['Command']['CommandId']
+checkCommandStatus(session,command_id,instance_id)
+
 ssm_delete_response = ssm_client.delete_document(Name=ssm_doc_name)
