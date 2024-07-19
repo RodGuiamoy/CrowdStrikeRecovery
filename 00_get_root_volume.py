@@ -1,8 +1,6 @@
 import boto3
 import sys
 
-
-
 def get_volume_for_dev_sda1(instance_id):
     # Describe the instance
     response = ec2.describe_instances(InstanceIds=[instance_id])
@@ -26,10 +24,10 @@ def get_volume_for_dev_sda1(instance_id):
             if volume_id:
                 return volume_id
             else:
-                print("No EBS volume found for /dev/sda1")
+                # print("No EBS volume found for /dev/sda1")
                 return
     
-    print("/dev/sda1 not found in block device mappings")
+    # print("/dev/sda1 not found in block device mappings")
     return
 
 instance_id = sys.argv[1]
