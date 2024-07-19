@@ -76,7 +76,6 @@ def describe_volume(volume_id, session):
                 time.sleep(5)
                 #break
 
-
     except Exception as e:
         print(f'Function: describe_volume. Error message: {e}')
         
