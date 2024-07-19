@@ -11,7 +11,7 @@ def describe_volume(volume_id, session):
             response = ec2.describe_volumes(VolumeIds=[volume_id])
             #print(type(response))
             print(response)
-            volume_status = (response['Volumes'][0]['State'])
+            volume_status = (response['Volumes'][0]['Attachments'][0]['State'])
             volume_status = volume_status.lower()
             if (volume_status == 'attached'):
                 #print("Waiting 5 secs before checking back")
