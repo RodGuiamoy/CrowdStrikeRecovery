@@ -30,6 +30,9 @@ def verInstance(verInstanceId,session):
         response = ec2.describe_instance_status(
             InstanceIds=[verInstanceId],
         )
+        
+        print(response)
+        
         verStatus = (response['InstanceStatuses'][0]['InstanceState']['Name'])
         return verStatus
     except Exception as e:
