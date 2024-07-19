@@ -55,6 +55,31 @@ def checkInstanceStatusRunning(chk_instance_id,session):
     except Exception as e:
         print(f'Function: checkInstanceStatusRunning. Error message: {e}')
         
+def describe_volume(volume_id, session):
+    #print(f'This is the describe_volume function') #--- CHANGES HERE
+    try:
+        var = ""
+        while not var:
+            ec2 = session.client('ec2')
+            response = ec2.describe_volumes(VolumeIds=[volume_id])
+            #print(type(response))
+            #print(response)
+            volume_status = (response['Volumes'][0]['Attachments'][0]['State'])
+            volume_status = volume_status.lower()
+            if (volume_status == 'available'):
+                #print("Waiting 5 secs before checking back")
+                var = "okay"
+                print(volume_status)
+                return volume_status
+
+            else:
+                time.sleep(5)
+                #break
+
+
+    except Exception as e:
+        print(f'Function: describe_volume. Error message: {e}')
+        
 instance_id = sys.argv[1]
 volume_id = sys.argv[2]
 region = sys.argv[3]
@@ -66,3 +91,4 @@ session = boto3.Session(region_name=region)
 if __name__ == "__main__":
     checkInstanceStatusRunning(instance_id,session)
     detach_ebs_volume(volume_id, instance_id)
+    describe_volume(volume_id, session)
