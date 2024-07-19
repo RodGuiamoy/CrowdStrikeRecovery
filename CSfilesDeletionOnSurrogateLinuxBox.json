@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "2.2",
+  "description": "Attach C: drive from Windows server to Linux server and delete files from specified path",
+  "parameters": {
+    "LinuxInstanceId": {
+      "type": "String",
+      "description": "The ID of the Linux instance to attach the volume to."
+    }
+  },
+  "mainSteps": [
+    {
+      "action": "aws:runShellScript",
+      "name": "AttachVolume",
+      "inputs": {
+        "InstanceIds": [
+          "{{ LinuxInstanceId }}"
+        ],
+        "runCommand": [
+          "sudo mkdir -p /mnt/windows_c_drive",
+          "sudo mount -tntfs3 /dev/xvdf1 /mnt/windows_c_drive"
+        ]
+      }
+    },
+    {
+      "action": "aws:runShellScript",
+      "name": "DeleteFiles",
+      "inputs": {
+        "InstanceIds": [
+          "{{ LinuxInstanceId }}"
+        ],
+        "runCommand": [
+          "sudo rm -rf /mnt/windows_c_drive/mnt/windows_c_drive"
+        ]
+      }
+    },
+    {
+      "action": "aws:runShellScript",
+      "name": "DetachVolume",
+      "inputs": {
+        "InstanceIds": [
+          "{{ LinuxInstanceId }}"
+        ],
+        "runCommand": [
+          "sudo umount /mnt/windows_c_drive"
+        ]
+      }
+    }
+  ]
+}
