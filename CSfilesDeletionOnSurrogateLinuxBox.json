@@ -17,18 +17,9 @@
         ],
         "runCommand": [
           "sudo mkdir -p /mnt/windows_c_drive",
-          "sudo mount -tntfs3 /dev/xvdf1 /mnt/windows_c_drive",
-          "if [[ $? -eq 0 ]]; then",
-          "   echo 'mounted'",
-          "else",
-          "   sudo mount -tntfs3 /dev/nmve1n1p2 /mnt/windows_c_drive",
-          "   if [[ $? -ne 0 ]]; then",
-          "       sudo mount -tntfs3 /dev/nmve1n1p1 /mnt/windows_c_drive",
-          "       echo $?",
-          "   else",
-          "       echo 'mounted'",
-          "   fi",
-          "fi"
+          "device=device=$(blkid | grep ntfs | grep -vi reserved | cut -f1 -d: | xargs lsblk | tail -n+2 | awk '{print $4 \" \" $1}' | sort -n | head -1 | cut -f2 -d' ')",
+          "sudo mount -tntfs3 /dev/$device /mnt/windows_c_drive"
+
         ]
       }
     },
