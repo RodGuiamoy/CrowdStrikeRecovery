@@ -1,7 +1,6 @@
 import boto3
 import sys
-
-
+import time
 
 def detach_ebs_volume(volume_id, instance_id):
     try:
@@ -23,13 +22,43 @@ def detach_ebs_volume(volume_id, instance_id):
     except Exception as e:
         print(f"Error detaching volume: {str(e)}")
         
+
+def verInstance(verInstanceId,session):
+    #print(f'This the verInstance function') #---Changes here
+    try:
+        ec2 = session.client('ec2')
+        response = ec2.describe_instance_status(
+            InstanceIds=[verInstanceId],
+        )
+        verStatus = (response['InstanceStatuses'][0]['InstanceState']['Name'])
+        return verStatus
+    except Exception as e:
+        print(f'Function: verInstance. Error message: {e}')
+        
+def checkInstanceStatusRunning(chk_instance_id,session):
+    var = ""
+    try:
+        while not var:
+
+            server_status = verInstance(chk_instance_id,session)
+            server_status = server_status.lower()
+            if (server_status == 'Stopped'):
+                var = 'ok'
+                return server_status
+            else:
+                time.sleep(5)
+                #break
+    except Exception as e:
+        print(f'Function: checkInstanceStatusRunning. Error message: {e}')
+        
 instance_id = sys.argv[1]
 volume_id = sys.argv[2]
 region = sys.argv[3]
 
 # Create an EC2 client
 ec2_client = boto3.client('ec2', region_name=region)
+session = boto3.Session(region_name=region)
 
 if __name__ == "__main__":
-
+    checkInstanceStatusRunning(instance_id,session)
     detach_ebs_volume(volume_id, instance_id)
