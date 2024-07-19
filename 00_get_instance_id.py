@@ -32,6 +32,4 @@ region = sys.argv[2]
 if __name__ == "__main__":
     instance_id = get_instance_id(instance_name, region)
     if instance_id:
-        print(f'Instance ID: {instance_id}')
-    else:
-        print('Instance not found')
+        print(f'{instance_id}')
