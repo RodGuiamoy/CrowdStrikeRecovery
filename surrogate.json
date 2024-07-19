@@ -23,15 +23,22 @@
 		"eu-west-1c":"i-02dd454a5b1970b91",
 		"us-east-1a":"i-0d5cdfcfb7c89980b",
 		"us-east-1b":"i-0da02e75b02499c85",
+		"us-west-2a":"i-0e736017ab1e5f4b7",
 		"us-west-2b":"i-0f016dae51f74549e"
 	}],
 	"DCO":[{
+		"ap-southeast-1a":"i-00a56a4792d156d3d",
 		"ap-southeast-1b":"i-014715344eb455da1",
+		"ap-southeast-2a":"i-0fbda2244f0c3de2d",
 		"ap-southeast-2b":"i-0eb0a957dd7acea48",
+		"ca-central-1a":"i-074d23d134802995f",
 		"ca-central-1b":"i-0eb6a2ccb9fcb8b4e",
+		"eu-central-1a":"i-00ae21a77af5f790b",
 		"eu-central-1b":"i-0218b6d20d1bed031",
 		"eu-west-1a":"i-0b88d39ddc6c21e3d",
+		"eu-west-1c":"i-0d079aefa39a55045",
 		"us-east-1b":"i-0e14485ff16fe18f2",
+		"us-east-1c":"i-0e4f0dc8ec85db648",
 		"us-west-2a":"i-0ea699b68d71f12b3",
 		"us-west-2b":"i-0b366e711a454ef87"
 	}]
