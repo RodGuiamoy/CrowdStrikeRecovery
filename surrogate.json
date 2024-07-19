@@ -1,0 +1,33 @@
+{
+	"Deltekdev":[{
+		"us-east-1a":"i-0d99f391ca7e1aa1d",
+		"us-east-1b":"i-082db1c40cb1fbc45",
+		"us-east-1c":"i-017f2d16ddb1585a8"
+	}],
+	"Costpoint":[{
+		"us-east-1b":"i-0b6369a617ce98113",
+		"us-west-2a":"i-0c3e8e5e0325dea94"
+	}],
+	"Flexplus":[{
+		"ap-southeast-1a":"i-0324dc241f370f4da",
+		"ap-southeast-2a":"i-0fff2a2c8dd0ccd5b",
+		"ca-central-1a":"i-00b07d262a9c9e1ef",
+		"eu-central-1a":"i-00a192455549065cb",
+		"eu-west-1b":"i-0b9a681c68e58661b",
+		"eu-west-1c":"i-02bd8a383ba57923a",
+		"us-east-1a":"i-0d5cdfcfb7c89980b",
+		"us-west-2a":"i-00ce021c38284522c"
+	}],
+	"DCO":[{
+		"ap-southeast-1a":"APSPPDSS1PM2",
+		"ap-southeast-1b":"APSPPDSS1SSH2",
+		"ap-southeast-2a":"APAUPDSS1PM2",
+		"ca-central-1a":"CACEPDSS1PM2",
+		"eu-central-1a":"EUCEPDSS1PM2",
+		"eu-west-1a":"EUWEPDSS1SSH4",
+		"eu-west-1c":"EUWEPDSS1PM2",
+		"us-east-1b":"USEAPDSS1SSH2",
+		"us-east-1c":"USEAPDSS1PM2",
+		"us-west-2a":"USWEPDSS1SSH2"
+	}]
+}
