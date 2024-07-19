@@ -16,9 +16,9 @@
           "{{ LinuxInstanceId }}"
         ],
         "runCommand": [
-          "sudo mkdir -p /mnt/windows_c_drive",
-          "device=device=$(blkid | grep ntfs | grep -vi reserved | cut -f1 -d: | xargs lsblk | tail -n+2 | awk '{print $4 \" \" $1}' | sort -n | head -1 | cut -f2 -d' ')",
-          "sudo mount -tntfs3 /dev/$device /mnt/windows_c_drive"
+          "mkdir -p /mnt/windows_c_drive",
+          "device=$(sudo fdisk -l | grep NTFS | grep  G|awk '{print $1 \" \" $5}'| sort -n | cut -f1 -d ' ')",
+          "mount -tntfs3 $device /mnt/windows_c_drive"
 
         ]
       }
