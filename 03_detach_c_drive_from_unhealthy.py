@@ -27,13 +27,14 @@ def verInstance(verInstanceId,session):
     #print(f'This the verInstance function') #---Changes here
     try:
         ec2 = session.client('ec2')
-        response = ec2.describe_instance_status(
+        response = ec2.describe_instances(
             InstanceIds=[verInstanceId],
         )
         
         print(response)
         
-        verStatus = (response['InstanceStatuses'][0]['InstanceState']['Name'])
+        # verStatus = (response['InstanceStatuses'][0]['InstanceState']['Name'])
+        verStatus = (response['Reservations'][0]['Instances'][0]['State']['Name'])
         return verStatus
     except Exception as e:
         print(f'Function: verInstance. Error message: {e}')
@@ -45,7 +46,7 @@ def checkInstanceStatusRunning(chk_instance_id,session):
 
             server_status = verInstance(chk_instance_id,session)
             server_status = server_status.lower()
-            if (server_status == 'Stopped'):
+            if (server_status == 'stopped'):
                 var = 'ok'
                 return server_status
             else:
@@ -64,4 +65,4 @@ session = boto3.Session(region_name=region)
 
 if __name__ == "__main__":
     checkInstanceStatusRunning(instance_id,session)
-    detach_ebs_volume(volume_id, instance_id)
+    # detach_ebs_volume(volume_id, instance_id)
