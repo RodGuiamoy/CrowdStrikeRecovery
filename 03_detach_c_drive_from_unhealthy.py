@@ -31,7 +31,7 @@ def verInstance(verInstanceId,session):
             InstanceIds=[verInstanceId],
         )
         
-        print(response)
+        # print(response)
         
         # verStatus = (response['InstanceStatuses'][0]['InstanceState']['Name'])
         verStatus = (response['Reservations'][0]['Instances'][0]['State']['Name'])
@@ -65,4 +65,4 @@ session = boto3.Session(region_name=region)
 
 if __name__ == "__main__":
     checkInstanceStatusRunning(instance_id,session)
-    # detach_ebs_volume(volume_id, instance_id)
+    detach_ebs_volume(volume_id, instance_id)
