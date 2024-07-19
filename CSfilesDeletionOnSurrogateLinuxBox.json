@@ -17,7 +17,18 @@
         ],
         "runCommand": [
           "sudo mkdir -p /mnt/windows_c_drive",
-          "sudo mount -tntfs3 /dev/xvdf1 /mnt/windows_c_drive"
+          "sudo mount -tntfs3 /dev/xvdf1 /mnt/windows_c_drive",
+          "if [[ $? -eq 0 ]]; then",
+          "   echo 'mounted'",
+          "else",
+          "   sudo mount -tntfs3 /dev/nmve1n1p2 /mnt/windows_c_drive",
+          "   if [[ $? -ne 0 ]]; then",
+          "       sudo mount -tntfs3 /dev/nmve1n1p1 /mnt/windows_c_drive",
+          "       echo $?",
+          "   else",
+          "       echo 'mounted'",
+          "   fi",
+          "fi"
         ]
       }
     },
@@ -29,7 +40,7 @@
           "{{ LinuxInstanceId }}"
         ],
         "runCommand": [
-          "sudo rm -rfv /mnt/windows_c_drive/Windows/System32/drivers/Crowdstrike/C-00000291*.sys"
+          "sudo rm -rf /mnt/windows_c_drive/Windows/System32/drivers/Crowdstrike/C-00000291*.sys"
         ]
       }
     },
