@@ -20,20 +20,19 @@
 		"eu-central-1a":"i-00a192455549065cb",
 		"eu-central-1b":"i-0d7835c4e48f0a81b",
 		"eu-west-1b":"i-0b9a681c68e58661b",
-		"eu-west-1c":"i-02bd8a383ba57923a",
+		"eu-west-1c":"i-02dd454a5b1970b91",
 		"us-east-1a":"i-0d5cdfcfb7c89980b",
-		"us-west-2a":"i-00ce021c38284522c"
+		"us-east-1b":"i-0da02e75b02499c85",
+		"us-west-2b":"i-0f016dae51f74549e"
 	}],
 	"DCO":[{
-		"ap-southeast-1a":"i-0d204ad1df15a70c7",
 		"ap-southeast-1b":"i-014715344eb455da1",
-		"ap-southeast-2a":"i-0b163005c908f2f4b",
-		"ca-central-1a":"i-04afd9b54a1dfe2f8",
-		"eu-central-1a":"i-017de7be8631f6a5d",
+		"ap-southeast-2b":"i-0eb0a957dd7acea48",
+		"ca-central-1b":"i-0eb6a2ccb9fcb8b4e",
+		"eu-central-1b":"i-0218b6d20d1bed031",
 		"eu-west-1a":"i-0b88d39ddc6c21e3d",
-		"eu-west-1c":"i-021535c3a0e533d1c",
 		"us-east-1b":"i-0e14485ff16fe18f2",
-		"us-east-1c":"i-0fc7236c618d12546",
-		"us-west-2a":"i-0ea699b68d71f12b3"
+		"us-west-2a":"i-0ea699b68d71f12b3",
+		"us-west-2b":"i-0b366e711a454ef87"
 	}]
 }

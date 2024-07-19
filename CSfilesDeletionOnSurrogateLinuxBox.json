@@ -29,7 +29,7 @@
           "{{ LinuxInstanceId }}"
         ],
         "runCommand": [
-          "sudo rm -rf /mnt/windows_c_drive/Windows/System32/drivers/Crowdstrike/C-00000291*.sys"
+          "sudo rm -rfv /mnt/windows_c_drive/Windows/System32/drivers/Crowdstrike/C-00000291*.sys"
         ]
       }
     },
