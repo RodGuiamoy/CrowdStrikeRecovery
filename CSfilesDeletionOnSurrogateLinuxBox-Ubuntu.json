@@ -16,9 +16,11 @@
           "{{ LinuxInstanceId }}"
         ],
         "runCommand": [
+          "sudo apt-get update",
+          "sudo apt-get install -y ntfs-3g",
           "mkdir -p /mnt/windows_c_drive",
-          "device=$(sudo fdisk -l | grep NTFS | grep  G|awk '{print $1 \" \" $5}'| sort -n | cut -f1 -d ' ')",
-          "mount -tntfs3 $device /mnt/windows_c_drive"
+          "device=$(sudo fdisk -l | grep NTFS | grep G | awk '{print $1 \" \" $5}' | sort -n | cut -f1 -d ' ')",
+          "sudo mount -t ntfs-3g $device /mnt/windows_c_drive"
         ]
       }
     },
