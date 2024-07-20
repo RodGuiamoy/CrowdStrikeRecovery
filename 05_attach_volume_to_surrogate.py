@@ -52,7 +52,7 @@ def checkCommandStatus(commandId,instances):
                 #str(output['InstanceId']) + " Status: " + str(output['StatusDetails']))
  
         #Check back in 5 minutes to avoid hammering the commection with status requests
-        if (ssmStatus != 'Success'):
+        if (ssmStatus != 'Success' or ssmStatus != 'Failed'):
             #print("Waiting 5 secs before checking back")
             print(ssmStatus)
             time.sleep(5)
